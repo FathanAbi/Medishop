@@ -1,42 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alat Besar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alat Besar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1>Alat Besar</h1>
+<header class="container-fluid bg-dark text-light p-3">
+      <div class="row">
+        <div class="col">
+          <a href="/" class="text-light text-decoration-none">Medishop</a>
+        </div>
+        <div class="col d-flex justify-content-end">
+          @auth
+            <a href="/dashboard" class="text-light text-decoration-none mx-2">Profile</a>
+            <a href="/cart" class="text-light text-decoration-none mx-2">Cart</a>
+            <a href="/payment" class="text-light text-decoration-none mx-2">Payment</a>
+          @endauth
+          @guest
+            <a href="/login" class="text-light text-decoration-none mx-2">Login</a>
+            <a href="/register" class="text-light text-decoration-none mx-2">Register</a>
+          @endguest
+        </div>
+      </div>
+  </header>
 
-        <!-- Display a message if no products are found -->
-        @if($products->isEmpty())
-            <p>No products found.</p>
-        @else
-            <!-- Display the products -->
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Foto</th>
-                        <th>Name</th>
-                        <th>Harga</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($products as $product)
-                        
-                        <tr>
-                            <td><img src="{{ $product->url_foto }}" alt="{{ $product->name }}"  width="200" height="150"></td>
-                            <td><a href="/products/{{ $product->id }}">{{ $product->name }}</a></td>
-                            <td>{{ $product->harga }}</td>
-                        </tr>
-                        
-                        
-                    @endforeach
-                </tbody>
-            </table>
-        @endif
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Alat Besar</h1>
+      </div>
     </div>
+    
+    @if($products->isEmpty())
+      <p class="alert alert-warning">No products found.</p>
+    @else
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach($products as $product)
+          <div class="col">
+            <div class="card h-100">
+              <img src="{{ $product->url_foto }}" class="card-img-top" alt="{{ $product->name }}" width="200" height="150">
+              <div class="card-body">
+                <h5 class="card-title"><a href="/products/{{ $product->id }}" class="text-decoration-none">{{ $product->name }}</a></h5>
+                <p class="card-text">{{ substr($product->deskripsi, 0, 50) . (strlen($product->deskripsi) > 50 ? "..." : "") }}</p>
+                <p class="card-text">Rp. {{ number_format($product->harga) }}</p>
+                <a href="/products/{{ $product->id }}" class="btn btn-primary">Add to Cart</a>
+              </div>
+            </div>
+          </div>
+        @endforeach
+      </div>
+    @endif
+  </div>
+
 </body>
 </html>

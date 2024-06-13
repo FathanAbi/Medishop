@@ -16,6 +16,9 @@ class PaymentController extends Controller
 
         $items = DB::table('payments')
             ->where('id_user', Auth::id())
+            ->join('products', 'payments.id_alat', '=', 'products.id')
+            ->select('payments.id', 'payments.id_alat', 'products.name', "products.url_foto", 'payments.status_pembayaran', 'payments.jumlah', 'payments.total_harga')
+            ->orderBy('status_pembayaran', 'DESC')
             ->get();
 
         // Return the view with the products data
