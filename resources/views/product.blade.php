@@ -40,9 +40,12 @@
             <p>{{ $paragraph }}</p>
         @endforeach
         <br>
-
+        
+        <h2>{{ $item->name }}</h2>
+        <a href="/shops/ {{ $product->toko }}" class="btn btn-primary">Toko</a><br><br>
         <a href="/verification/ {{ $product->id }}" class="btn btn-primary">Cek Verifikasi</a>
 
+        @auth
         <form action="{{ route('cart.store') }}" method="post">
           @csrf
           <div class="mb-3">
@@ -54,6 +57,7 @@
           <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
           <button type="submit" class="btn btn-primary">Add to Cart</button>
         </form>
+        @endauth
       </div>
     </div>
   </div>

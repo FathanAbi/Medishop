@@ -47,6 +47,11 @@ Route::get('/payment', [App\Http\Controllers\PaymentController::class, 'index'])
 Route::get('/payment/{id}', [App\Http\Controllers\PaymentController::class, 'show'])->name('payment.show');
 Route::post('/payment/{id}', [App\Http\Controllers\PaymentController::class, 'update'])->name('payment.update');
 
+Route::get('/shops/create', [App\Http\Controllers\ShopController::class, 'create'])->name('shops.create');
+Route::post('/shops', [App\Http\Controllers\ShopController::class, 'store'])->name('shops.store');
+
+Route::get('/shops/{id}', [App\Http\Controllers\ShopController::class, 'show'])->name('shop.show'); // Optional route name
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

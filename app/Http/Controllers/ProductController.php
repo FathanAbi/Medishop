@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 class ProductController extends Controller
 {
     public function create()
@@ -53,9 +55,19 @@ class ProductController extends Controller
 
     public function show($id)
     {
+        
+
         $product = Product::findOrFail($id); // Fetches product or throws an exception if not found
 
-        return view('product', compact('product')); // Passes product data to the view
+        $item = DB::table('products')
+            ->join('shops', 'products.toko', '=', 'shops.id')
+            ->select('shops.name')
+            ->where('shops.id', $product['toko'])
+            ->where('products.id', $product['id'])
+            ->first();
+
+
+        return view('product', compact('product', 'item')); // Passes product data to the view
     }
 
     public function showVerification($id)
