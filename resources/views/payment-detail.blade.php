@@ -59,6 +59,7 @@
             <p class="text-info">Menunggu konfirmasi toko (Waiting for store confirmation)</p>
             @endif
             
+            <a href="/products/{{ $item->product_id }} " class="btn btn-primary">Produk Page</a><br><br>
           </div>
         </div>
       </div>

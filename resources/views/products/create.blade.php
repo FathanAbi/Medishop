@@ -35,9 +35,15 @@
                 <label for="name" class="form-label">Product Name</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
             </div>
+         
             <div class="mb-3">
                 <label for="type" class="form-label">Product Type</label>
-                <input type="text" class="form-control" id="type" name="type" value="{{ old('type') }}" required>
+                <select class="form-control" id="type" name="type" required>
+                    <option value="" disabled selected>Select product type</option>
+                    <option value="Alat Besar">Alat Besar</option>
+                    <option value="Alat Sedang">Alat Sedang</option>
+                    <option value="Alat Kecil">Alat Kecil</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="toko" class="form-label">Product toko</label>
@@ -56,8 +62,12 @@
                 <textarea class="form-control wider-field" id="deskripsi" name="deskripsi" required>{{ old('deskripsi') }}</textarea>
             </div>
             <div class="mb-3">
-                <label for="status_verifikasi" class="form-label">Product status_verifikasi</label>
-                <input type="text" class="form-control" id="status_verifikasi" name="status_verifikasi" value="{{ old('status_verifikasi') }}" required>
+                <label for="status_verifikasi" class="form-label">Product Status Verifikasi</label>
+                <select class="form-control" id="status_verifikasi" name="status_verifikasi" required>
+                    <option value="" disabled selected>Select verification status</option>
+                    <option value="Belum Terverifikasi">Belum Terverifikasi</option>
+                    <option value="Sudah Terverifikasi">Sudah Terverifikasi</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="verifikator" class="form-label">Product verifikator</label>

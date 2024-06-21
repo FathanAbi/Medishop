@@ -27,6 +27,9 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/alat-kecil', [App\Http\Controllers\AlatKecilController::class, 'index'])->name('alat-kecil');
 Route::get('/alat-besar', [App\Http\Controllers\AlatBesarController::class, 'index'])->name('alat-besar');
+Route::get('/alat-sedang', [App\Http\Controllers\AlatSedangController::class, 'index'])->name('alat-sedang');
+
+Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 
 
 // routes/web.php

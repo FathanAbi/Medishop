@@ -32,8 +32,10 @@ class PaymentController extends Controller
         $item = DB::table('payments')
         ->join('products', 'payments.id_alat', '=', 'products.id')
         ->where('payments.id', $id)
-        ->select('payments.id', 'payments.id_alat', 'products.name', "products.url_foto", 'payments.status_pembayaran', 'payments.jumlah', 'payments.total_harga')
+        ->select('payments.id', 'payments.id_alat', 'products.name', 'products.id as product_id', "products.url_foto", 'payments.status_pembayaran', 'payments.jumlah', 'payments.total_harga')
         ->first(); // Fetches product or throws an exception if not found
+
+
    
         return view('payment-detail', compact('item')); // Passes product data to the view
     }

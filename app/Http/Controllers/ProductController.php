@@ -76,4 +76,12 @@ class ProductController extends Controller
 
         return view('verification', compact('product')); // Passes product data to the view
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $products = Product::where('name', 'LIKE', "%{$query}%")->get();
+
+        return view('products.index', compact('products'));
+    }
 }
