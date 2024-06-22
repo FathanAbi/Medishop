@@ -47,7 +47,7 @@
   @endif
 
   <div class="container mt-5">
-    <h1>Waiting for Payment</h1>
+    <h1>Status Pembayaran</h1>
 
     @if($items->isEmpty())
       <p class="text-center">No orders found.</p>

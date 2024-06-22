@@ -43,7 +43,7 @@
     <div class="container mt-5">
     <div class="row">
       <div class="col-md-12">
-        <h1>Alat Besar</h1>
+        <h1>Search Result</h1>
       </div>
     </div>
     

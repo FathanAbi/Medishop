@@ -18,7 +18,7 @@ class ShopController extends Controller
      
         $request->validate([
             'nama' => 'required|string|max:255',
-            'deskripsi' => 'required|string|max:255',
+            'deskripsi' => 'required|string|max:1020',
             'alamat' => 'required|string|max:255',
         ]);
 
